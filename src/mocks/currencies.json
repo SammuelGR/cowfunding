@@ -1,0 +1,72 @@
+[
+	{
+		"name": "Bitcoin",
+		"code": "BTC",
+		"decimalPlaces": 8,
+		"iconUrl": "https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png",
+		"networks": ["Bitcoin", "Lightning Network"]
+	},
+	{
+		"name": "Ethereum",
+		"code": "ETH",
+		"decimalPlaces": 18,
+		"iconUrl": "https://coin-images.coingecko.com/coins/images/279/small/ethereum.png",
+		"networks": ["Ethereum", "Polygon", "Arbitrum"]
+	},
+	{
+		"name": "Binance Coin",
+		"code": "BNB",
+		"decimalPlaces": 18,
+		"iconUrl": "https://coin-images.coingecko.com/coins/images/825/small/bnb-icon2_2x.png",
+		"networks": ["Binance Smart Chain", "Ethereum"]
+	},
+	{
+		"name": "Cardano",
+		"code": "ADA",
+		"decimalPlaces": 6,
+		"iconUrl": "https://coin-images.coingecko.com/coins/images/975/small/cardano.png",
+		"networks": ["Cardano"]
+	},
+	{
+		"name": "Solana",
+		"code": "SOL",
+		"decimalPlaces": 9,
+		"iconUrl": "https://coin-images.coingecko.com/coins/images/4128/small/solana.png",
+		"networks": ["Solana"]
+	},
+	{
+		"name": "Polkadot",
+		"code": "DOT",
+		"decimalPlaces": 10,
+		"iconUrl": "https://coin-images.coingecko.com/coins/images/12171/small/polkadot.png",
+		"networks": ["Polkadot"]
+	},
+	{
+		"name": "Dogecoin",
+		"code": "DOGE",
+		"decimalPlaces": 8,
+		"iconUrl": "https://coin-images.coingecko.com/coins/images/5/small/dogecoin.png",
+		"networks": ["Dogecoin"]
+	},
+	{
+		"name": "Chainlink",
+		"code": "LINK",
+		"decimalPlaces": 18,
+		"iconUrl": "https://coin-images.coingecko.com/coins/images/877/small/chainlink-new-logo.png",
+		"networks": ["Ethereum", "Binance Smart Chain", "Polygon"]
+	},
+	{
+		"name": "Litecoin",
+		"code": "LTC",
+		"decimalPlaces": 8,
+		"iconUrl": "https://coin-images.coingecko.com/coins/images/2/small/litecoin.png",
+		"networks": ["Litecoin"]
+	},
+	{
+		"name": "POL",
+		"code": "POL",
+		"decimalPlaces": 18,
+		"iconUrl": "https://coin-images.coingecko.com/coins/images/32440/small/polygon.png",
+		"networks": ["Polygon", "Ethereum"]
+	}
+]
