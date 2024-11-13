@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
@@ -7,4 +8,12 @@ export const StyledContainer = styled.div`
 	height: 100vh;
 	justify-content: center;
 	width: 100%;
+`;
+
+export const StyledLink = styled(Link)`
+	&:hover {
+		color: #babaca;
+	}
+
+	transition: color 0.2s ease-in-out;
 `;

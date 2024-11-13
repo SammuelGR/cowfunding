@@ -14,5 +14,5 @@ export const StyledButton = styled.button`
 		background-color: #2e899d;
 	}
 
-	transition: background-color 0.2s;
+	transition: background-color 0.2s ease-in-out;
 `;
