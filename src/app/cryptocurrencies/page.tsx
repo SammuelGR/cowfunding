@@ -1,15 +1,17 @@
 'use client';
 
-import currenciesMock from '@/mocks/currencies.json';
+import { useState } from 'react';
+
+import useCurrencies from '@/hooks/useCurrencies';
 
 import Filters, { FormFields, initialValues } from './Filters';
 import Header from './Header';
 import { StyledContent, StyledContainer, StyeldHr } from './styles';
 import Table from './Table';
-import { useState } from 'react';
 
 export default function Cryptocurrencies() {
 	const [filters, setFilters] = useState(initialValues);
+	const { currencies } = useCurrencies();
 
 	const filtersChangeHandler = (
 		field: keyof FormFields,
@@ -29,7 +31,7 @@ export default function Cryptocurrencies() {
 		setFilters(initialValues);
 	};
 
-	const currenciesList = currenciesMock
+	const currenciesList = currencies
 		.filter((currency) =>
 			currency.name
 				.toLocaleLowerCase()

@@ -1,7 +1,7 @@
 export interface Cryptocurrency {
 	code: string;
 	decimalPlaces: number;
-	iconUrl: string;
+	iconUrl?: string;
 	name: string;
 	networks: string[];
 }
