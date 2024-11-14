@@ -11,6 +11,7 @@ import {
 	StyledTr,
 } from './styles';
 import PrimaryButton from '@/components/PrimaryButton';
+import iconPlaceholder from '@/app/dollar.png';
 import Delete from '../Dialogs/Delete';
 
 interface RowProps {
@@ -38,7 +39,7 @@ export default function Row({ currency }: RowProps) {
 				<Image
 					style={{ display: 'inline' }}
 					alt={`currency ${currency.name} icon`}
-					src={currency.iconUrl}
+					src={currency.iconUrl || iconPlaceholder}
 					width={32}
 					height={32}
 				/>
