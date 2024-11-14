@@ -20,13 +20,14 @@ interface RowProps {
 export default function Row({ currency }: RowProps) {
 	const {
 		isOpen: isEditOpen,
+		onClose: onEditClose,
 		onOpen: onEditOpen,
 		onOpenChange: onEditOpenChange,
-		onClose: onEditClose,
 	} = useDisclosure();
 
 	const {
 		isOpen: isDeleteOpen,
+		onClose: onDeleteClose,
 		onOpen: onDeleteOpen,
 		onOpenChange: onDeleteOpenChange,
 	} = useDisclosure();
@@ -65,6 +66,7 @@ export default function Row({ currency }: RowProps) {
 						currency={currency}
 						isOpen={true}
 						onOpenChange={onDeleteOpenChange}
+						onRequestToClose={onDeleteClose}
 					/>
 				)}
 

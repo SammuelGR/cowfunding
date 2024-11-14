@@ -3,19 +3,44 @@ import {
 	ModalHeader,
 	ModalBody,
 	ModalFooter,
-	Button,
 } from '@nextui-org/react';
 
 import Modal from '@/components/Modal';
+import PrimaryButton from '@/components/PrimaryButton';
 import { Cryptocurrency } from '@/models/Currencies';
+
+import { StyledDangerButton } from '../styles';
+import useCurrencies from '@/hooks/useCurrencies';
 
 interface EditProps {
 	currency: Cryptocurrency;
 	isOpen: boolean;
 	onOpenChange: () => void;
+	onRequestToClose: () => void;
 }
 
-export default function Delete({ currency, isOpen, onOpenChange }: EditProps) {
+export default function Delete({
+	currency,
+	isOpen,
+	onOpenChange,
+	onRequestToClose,
+}: EditProps) {
+	const { setCurrencies } = useCurrencies();
+
+	const confirmClickHandler = () => {
+		setCurrencies((prevCurrencies) => {
+			const newCurrencies = [...prevCurrencies];
+
+			const cIndex = newCurrencies.findIndex(
+				({ code }) => code === currency.code,
+			);
+
+			return newCurrencies.toSpliced(cIndex, 1);
+		});
+
+		onRequestToClose();
+	};
+
 	return (
 		<Modal
 			id="modal-delete-currency"
@@ -36,13 +61,13 @@ export default function Delete({ currency, isOpen, onOpenChange }: EditProps) {
 						</ModalBody>
 
 						<ModalFooter>
-							<Button color="danger" variant="light" onPress={onClose}>
+							<StyledDangerButton onClick={onClose}>
 								Cancelar
-							</Button>
+							</StyledDangerButton>
 
-							<Button color="primary" onPress={onClose}>
+							<PrimaryButton onClick={confirmClickHandler}>
 								Confirmar
-							</Button>
+							</PrimaryButton>
 						</ModalFooter>
 					</>
 				)}

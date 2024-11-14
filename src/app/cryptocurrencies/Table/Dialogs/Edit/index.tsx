@@ -11,7 +11,7 @@ import { Cryptocurrency } from '@/models/Currencies';
 import TextInput from '@/components/Input/TextInput';
 import PrimaryButton from '@/components/PrimaryButton';
 
-import { StyledDangerButton } from './styles';
+import { StyledDangerButton } from '../styles';
 import useCurrencies from '@/hooks/useCurrencies';
 
 interface EditProps {
@@ -33,7 +33,7 @@ export default function Edit({
 
 	const submitClickHandler = () => {
 		setCurrencies((prevCurrencies) => {
-			const newCurrencies = prevCurrencies;
+			const newCurrencies = [...prevCurrencies];
 
 			const cIndex = newCurrencies.findIndex(
 				({ code }) => code === currency.code,
