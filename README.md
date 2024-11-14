@@ -60,7 +60,17 @@
 
 **Prioridade:** Essencial
 
-...
+#### RFS07 - Consultar Criptomoeda
+
+| Identificação                     | [RFS07] Consultar Criptomoeda                                                                                        |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Atores**                        | Administrador do sistema                                                                                             |
+| **Filtros para Consulta**         | - Nome da Criptomoeda <br> - Símbolo (ex: BTC, ETH)                                                                  |
+| **Campos Retornados na Listagem** | - Nome da Criptomoeda <br> - Símbolo (ex: BTC, ETH) <br> - Casas decimais <br> - Redes aceitas                       |
+| **Regras de Validação**           | - O filtro é opcional. <br> - O sistema deve retornar as criptomoedas que atendam a todos os critérios selecionados. |
+| **Atributos de Escolha Fechada**  | Não se aplicam neste caso                                                                                            |
+| **Prioridade do Requisito**       | Essencial                                                                                                            |
+| **Regras de Negócio**             | - A lista retornada é ordenada por ordem alfabética, de acordo com o nome da criptomoeda.                            |
 
 ### 3. Requisitos Não Funcionais
 
