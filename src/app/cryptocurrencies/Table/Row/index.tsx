@@ -22,6 +22,7 @@ export default function Row({ currency }: RowProps) {
 		isOpen: isEditOpen,
 		onOpen: onEditOpen,
 		onOpenChange: onEditOpenChange,
+		onClose: onEditClose,
 	} = useDisclosure();
 
 	const {
@@ -72,6 +73,7 @@ export default function Row({ currency }: RowProps) {
 						currency={currency}
 						isOpen={true}
 						onOpenChange={onEditOpenChange}
+						onRequestToClose={onEditClose}
 					/>
 				)}
 			</td>
