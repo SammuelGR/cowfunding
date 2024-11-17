@@ -6,12 +6,12 @@ import {
 } from '@nextui-org/react';
 import { useState } from 'react';
 
+import DangerButton from '@/components/Button/DangerButton';
+import PrimaryButton from '@/components/Button/PrimaryButton';
+import TextInput from '@/components/Input/TextInput';
 import Modal from '@/components/Modal';
 import { Cryptocurrency } from '@/models/Currencies';
-import TextInput from '@/components/Input/TextInput';
-import PrimaryButton from '@/components/PrimaryButton';
 
-import { StyledDangerButton } from '../styles';
 import useCurrencies from '@/hooks/useCurrencies';
 
 interface EditProps {
@@ -80,9 +80,7 @@ export default function Edit({
 						</ModalBody>
 
 						<ModalFooter>
-							<StyledDangerButton onClick={onClose}>
-								Cancelar
-							</StyledDangerButton>
+							<DangerButton onClick={onClose}>Cancelar</DangerButton>
 
 							<PrimaryButton
 								disabled={!currencyName || !decimalPlaces}

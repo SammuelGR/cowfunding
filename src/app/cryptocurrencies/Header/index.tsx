@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { StyledHeader } from './styles';
-import PrimaryButton from '@/components/PrimaryButton';
+import PrimaryButton from '@/components/Button/PrimaryButton';
 import { useDisclosure } from '@nextui-org/react';
 import CreateDialog from './CreateDialog';
 

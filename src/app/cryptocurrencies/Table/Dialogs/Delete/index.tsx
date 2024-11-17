@@ -5,12 +5,11 @@ import {
 	ModalFooter,
 } from '@nextui-org/react';
 
+import DangerButton from '@/components/Button/DangerButton';
+import PrimaryButton from '@/components/Button/PrimaryButton';
 import Modal from '@/components/Modal';
-import PrimaryButton from '@/components/PrimaryButton';
-import { Cryptocurrency } from '@/models/Currencies';
-
-import { StyledDangerButton } from '../styles';
 import useCurrencies from '@/hooks/useCurrencies';
+import { Cryptocurrency } from '@/models/Currencies';
 
 interface EditProps {
 	currency: Cryptocurrency;
@@ -61,9 +60,7 @@ export default function Delete({
 						</ModalBody>
 
 						<ModalFooter>
-							<StyledDangerButton onClick={onClose}>
-								Cancelar
-							</StyledDangerButton>
+							<DangerButton onClick={onClose}>Cancelar</DangerButton>
 
 							<PrimaryButton onClick={confirmClickHandler}>
 								Confirmar
