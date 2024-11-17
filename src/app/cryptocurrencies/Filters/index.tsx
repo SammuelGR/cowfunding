@@ -5,7 +5,7 @@ import {
 	StyledContainer,
 	StyledFiltersContainer,
 } from './styles';
-import PrimaryButton from '@/components/PrimaryButton';
+import PrimaryButton from '@/components/Button/PrimaryButton';
 
 export interface FormFields {
 	name: string;

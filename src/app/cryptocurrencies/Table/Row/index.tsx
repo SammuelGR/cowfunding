@@ -10,7 +10,7 @@ import {
 	StyledNameField,
 	StyledTr,
 } from './styles';
-import PrimaryButton from '@/components/PrimaryButton';
+import PrimaryButton from '@/components/Button/PrimaryButton';
 import iconPlaceholder from '@/app/dollar.png';
 import Delete from '../Dialogs/Delete';
 

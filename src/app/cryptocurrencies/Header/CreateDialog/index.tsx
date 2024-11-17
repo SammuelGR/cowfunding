@@ -6,13 +6,14 @@ import {
 } from '@nextui-org/react';
 import { useState } from 'react';
 
-import Modal from '@/components/Modal';
-import PrimaryButton from '@/components/PrimaryButton';
+import DangerButton from '@/components/Button/DangerButton';
+import PrimaryButton from '@/components/Button/PrimaryButton';
 import TextInput from '@/components/Input/TextInput';
+import Modal from '@/components/Modal';
 import useCurrencies from '@/hooks/useCurrencies';
 import { Cryptocurrency } from '@/models/Currencies';
 
-import { StyledCheckboxGroup, StyledDangerButton } from './styles';
+import { StyledCheckboxGroup } from './styles';
 
 interface CreateDialogProps {
 	isOpen: boolean;
@@ -160,9 +161,7 @@ export default function CreateDialog({
 						</ModalBody>
 
 						<ModalFooter>
-							<StyledDangerButton onClick={onClose}>
-								Cancelar
-							</StyledDangerButton>
+							<DangerButton onClick={onClose}>Cancelar</DangerButton>
 
 							<PrimaryButton disabled={!isValid} onClick={onSubmitHandler}>
 								Salvar

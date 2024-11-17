@@ -1,4 +1,4 @@
-import PrimaryButton from '@/components/PrimaryButton';
+import PrimaryButton from '@/components/Button/PrimaryButton';
 import styled from 'styled-components';
 
 export const StyledTr = styled.tr`
