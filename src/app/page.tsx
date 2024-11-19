@@ -4,7 +4,10 @@ import Image from 'next/image';
 import vakenha from './vakenha.png';
 import { StyledContainer, StyledLink } from './styles';
 
-const links = [{ name: 'Moedas', href: '/cryptocurrencies' }];
+const links = [
+	{ name: 'Moedas', href: '/cryptocurrencies' },
+	{ name: 'Usuários', href: '/users' },
+];
 
 export default function Home() {
 	return (

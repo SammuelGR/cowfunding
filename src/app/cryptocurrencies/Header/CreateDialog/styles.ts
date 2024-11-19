@@ -1,13 +1,4 @@
-import PrimaryButton from '@/components/Button/PrimaryButton';
 import styled from 'styled-components';
-
-export const StyledDangerButton = styled(PrimaryButton)`
-	background-color: #ff1b1b;
-
-	&:hover {
-		background-color: #f45050;
-	}
-`;
 
 export const StyledCheckboxGroup = styled.div`
 	label:first-of-type {
