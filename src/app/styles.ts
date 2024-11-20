@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledContainer = styled.div`
 	align-items: center;
@@ -10,10 +10,18 @@ export const StyledContainer = styled.div`
 	width: 100%;
 `;
 
-export const StyledLink = styled(Link)`
+const buttonStyles = css`
 	&:hover {
 		color: #babaca;
 	}
 
 	transition: color 0.2s ease-in-out;
+`;
+
+export const StyledLink = styled(Link)`
+	${buttonStyles};
+`;
+
+export const StyledSeedButton = styled.button`
+	${buttonStyles};
 `;

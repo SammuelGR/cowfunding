@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledTable = styled.table`
+export const Table = styled.table`
 	border-collapse: collapse;
 	margin-top: 16px;
 	width: 100%;
@@ -16,3 +16,5 @@ export const StyledTable = styled.table`
 		border-bottom: 1px solid #505055;
 	}
 `;
+
+export default Table;
