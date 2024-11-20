@@ -1,4 +1,3 @@
-import PrimaryButton from '@/components/Button/PrimaryButton';
 import styled from 'styled-components';
 
 export const StyledTr = styled.tr`
@@ -17,12 +16,4 @@ export const StyledButtonsContainer = styled.div`
 	display: flex;
 	gap: 16px;
 	justify-self: flex-end;
-`;
-
-export const StyledDeleteButton = styled(PrimaryButton)`
-	background-color: #ff1b1b;
-
-	&:hover {
-		background-color: #f45050;
-	}
 `;

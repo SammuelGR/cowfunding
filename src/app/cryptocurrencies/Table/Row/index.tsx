@@ -1,17 +1,13 @@
 import { useDisclosure } from '@nextui-org/react';
 import Image from 'next/image';
 
+import iconPlaceholder from '@/app/dollar.png';
+import DangerButton from '@/components/Button/DangerButton';
+import PrimaryButton from '@/components/Button/PrimaryButton';
 import { Cryptocurrency } from '@/models/Currencies';
 
+import { StyledButtonsContainer, StyledNameField, StyledTr } from './styles';
 import Edit from '../Dialogs/Edit';
-import {
-	StyledButtonsContainer,
-	StyledDeleteButton,
-	StyledNameField,
-	StyledTr,
-} from './styles';
-import PrimaryButton from '@/components/Button/PrimaryButton';
-import iconPlaceholder from '@/app/dollar.png';
 import Delete from '../Dialogs/Delete';
 
 interface RowProps {
@@ -55,9 +51,7 @@ export default function Row({ currency }: RowProps) {
 
 			<td>
 				<StyledButtonsContainer>
-					<StyledDeleteButton onClick={onDeleteOpen}>
-						Excluir
-					</StyledDeleteButton>
+					<DangerButton onClick={onDeleteOpen}>Excluir</DangerButton>
 
 					<PrimaryButton onClick={onEditOpen}>Editar</PrimaryButton>
 				</StyledButtonsContainer>
