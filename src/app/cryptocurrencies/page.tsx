@@ -6,7 +6,7 @@ import useCurrencies from '@/hooks/useCurrencies';
 
 import Filters, { FormFields, initialValues } from './Filters';
 import Header from './Header';
-import { StyledContent, StyledContainer, StyeldHr } from './styles';
+import { StyledContent, StyledContainer, StyledHr } from './styles';
 import Table from './Table';
 
 export default function Cryptocurrencies() {
@@ -56,7 +56,7 @@ export default function Cryptocurrencies() {
 						onCleanFilters={clearFiltersHandler}
 					/>
 
-					<StyeldHr />
+					<StyledHr />
 
 					<Table currencies={currenciesList} />
 				</StyledContent>

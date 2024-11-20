@@ -8,11 +8,12 @@ import { useState } from 'react';
 
 import DangerButton from '@/components/Button/DangerButton';
 import PrimaryButton from '@/components/Button/PrimaryButton';
+import Select from '@/components/Input/Select';
 import TextInput from '@/components/Input/TextInput';
 import Modal from '@/components/Modal';
+import useUsers from '@/hooks/useUsers';
 import { User } from '@/models/User';
 import { Country } from '@/utils/countries';
-import Select from '@/components/Input/Select';
 
 interface CreateDialogProps {
 	isOpen: boolean;
@@ -33,6 +34,7 @@ export default function CreateDialog({
 	onRequestToClose,
 }: CreateDialogProps) {
 	const [userForm, setUserForm] = useState<User>(initialValues);
+	const { setUsers } = useUsers();
 
 	const formChangeHandler = (field: keyof User, value: User[keyof User]) => {
 		setUserForm((prevUserForm) => {
@@ -43,6 +45,13 @@ export default function CreateDialog({
 	};
 
 	const onSubmitHandler = () => {
+		setUsers((prevUsers) => {
+			const newUsers = [...prevUsers];
+			newUsers.push(userForm);
+
+			return newUsers;
+		});
+
 		onRequestToClose();
 	};
 

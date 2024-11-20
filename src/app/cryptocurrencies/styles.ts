@@ -16,7 +16,7 @@ export const StyledContent = styled.div`
 	width: 100%;
 `;
 
-export const StyeldHr = styled.hr`
+export const StyledHr = styled.hr`
 	border-bottom: 1px solid #666;
 	margin: 32px 0;
 	width: 100%;
