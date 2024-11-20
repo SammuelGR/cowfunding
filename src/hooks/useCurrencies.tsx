@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
 
-import currenciesMock from '@/mocks/currencies.json';
 import { Cryptocurrency } from '@/models/Currencies';
 
 export interface CurrenciesProviderProps {
@@ -11,8 +10,7 @@ export interface CurrenciesProviderProps {
 const CurrenciesContext = createContext<CurrenciesProviderProps | null>(null);
 
 export const CurrenciesProvider = ({ children }: React.PropsWithChildren) => {
-	const [currencies, setCurrencies] =
-		useState<Cryptocurrency[]>(currenciesMock);
+	const [currencies, setCurrencies] = useState<Cryptocurrency[]>([]);
 
 	return (
 		<CurrenciesContext.Provider

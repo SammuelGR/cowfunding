@@ -5,15 +5,16 @@ import {
 	ModalFooter,
 } from '@nextui-org/react';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import DangerButton from '@/components/Button/DangerButton';
 import PrimaryButton from '@/components/Button/PrimaryButton';
 import Select from '@/components/Input/Select';
 import TextInput from '@/components/Input/TextInput';
 import Modal from '@/components/Modal';
+import { Country } from '@/enums/Country';
 import useUsers from '@/hooks/useUsers';
 import { User } from '@/models/User';
-import { Country } from '@/utils/countries';
 
 interface CreateDialogProps {
 	isOpen: boolean;
@@ -25,6 +26,7 @@ const initialValues: User = {
 	country: Country.Brasil,
 	email: '',
 	fullname: '',
+	id: '',
 	walletAddress: '',
 };
 
@@ -45,6 +47,8 @@ export default function CreateDialog({
 	};
 
 	const onSubmitHandler = () => {
+		userForm.id = uuidv4();
+
 		setUsers((prevUsers) => {
 			const newUsers = [...prevUsers];
 			newUsers.push(userForm);

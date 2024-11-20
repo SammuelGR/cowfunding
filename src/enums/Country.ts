@@ -7,6 +7,8 @@ export enum Country {
 	EstadosUnidos = 'Estados Unidos',
 	Franca = 'França',
 	India = 'Índia',
+	Italia = 'Itália',
 	Japao = 'Japão',
+	Portugal = 'Portugal',
 	ReinoUnido = 'Reino Unido',
 }
