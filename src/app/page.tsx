@@ -2,11 +2,17 @@
 
 import Image from 'next/image';
 import vakenha from './vakenha.png';
-import { StyledContainer, StyledLink } from './styles';
+import { StyledContainer, StyledLink, StyledSeedButton } from './styles';
+import { useSeeds } from '@/seeds/useSeeds';
 
-const links = [{ name: 'Moedas', href: '/cryptocurrencies' }];
+const links = [
+	{ name: 'Moedas', href: '/cryptocurrencies' },
+	{ name: 'Usuários', href: '/users' },
+];
 
 export default function Home() {
+	const { seedData } = useSeeds();
+
 	return (
 		<StyledContainer>
 			<Image
@@ -22,6 +28,8 @@ export default function Home() {
 					<span>{link.name}</span>
 				</StyledLink>
 			))}
+
+			<StyledSeedButton onClick={() => seedData()}>Seed</StyledSeedButton>
 		</StyledContainer>
 	);
 }

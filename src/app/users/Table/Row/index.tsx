@@ -1,20 +1,18 @@
 import { useDisclosure } from '@nextui-org/react';
-import Image from 'next/image';
 
-import iconPlaceholder from '@/app/dollar.png';
 import DangerButton from '@/components/Button/DangerButton';
 import PrimaryButton from '@/components/Button/PrimaryButton';
-import { Cryptocurrency } from '@/models/Currencies';
+import { User } from '@/models/User';
 
 import Delete from './Dialogs/Delete';
 import Edit from './Dialogs/Edit';
-import { StyledButtonsContainer, StyledNameField, StyledTr } from './styles';
+import { StyledButtonsContainer, StyledTd, StyledTr } from './styles';
 
 interface RowProps {
-	currency: Cryptocurrency;
+	user: User;
 }
 
-export default function Row({ currency }: RowProps) {
+export default function Row({ user }: RowProps) {
 	const {
 		isOpen: isEditOpen,
 		onClose: onEditClose,
@@ -29,27 +27,23 @@ export default function Row({ currency }: RowProps) {
 		onOpenChange: onDeleteOpenChange,
 	} = useDisclosure();
 
+	const formatWalletAddress = (address: string) => {
+		return `${address.slice(0, 6)}...${address.slice(-6)}`;
+	};
+
 	return (
 		<StyledTr>
-			<StyledNameField>
-				<Image
-					style={{ display: 'inline' }}
-					alt={`currency ${currency.name} icon`}
-					src={currency.iconUrl || iconPlaceholder}
-					width={32}
-					height={32}
-				/>
+			<StyledTd className="text-xs">{user.id}</StyledTd>
 
-				{currency.name}
-			</StyledNameField>
+			<StyledTd>{user.fullname}</StyledTd>
 
-			<td>{currency.code}</td>
+			<StyledTd>{user.email}</StyledTd>
 
-			<td>{currency.decimalPlaces}</td>
+			<StyledTd>{user.country}</StyledTd>
 
-			<td>{currency.networks.join(', ')}</td>
+			<StyledTd>{formatWalletAddress(user.walletAddress)}</StyledTd>
 
-			<td>
+			<StyledTd>
 				<StyledButtonsContainer>
 					<DangerButton onClick={onDeleteOpen}>Excluir</DangerButton>
 
@@ -58,7 +52,7 @@ export default function Row({ currency }: RowProps) {
 
 				{isDeleteOpen && (
 					<Delete
-						currency={currency}
+						user={user}
 						isOpen={true}
 						onOpenChange={onDeleteOpenChange}
 						onRequestToClose={onDeleteClose}
@@ -67,13 +61,13 @@ export default function Row({ currency }: RowProps) {
 
 				{isEditOpen && (
 					<Edit
-						currency={currency}
+						user={user}
 						isOpen={true}
 						onOpenChange={onEditOpenChange}
 						onRequestToClose={onEditClose}
 					/>
 				)}
-			</td>
+			</StyledTd>
 		</StyledTr>
 	);
 }

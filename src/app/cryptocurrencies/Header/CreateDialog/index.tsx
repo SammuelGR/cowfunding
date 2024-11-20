@@ -97,7 +97,7 @@ export default function CreateDialog({
 
 	return (
 		<Modal
-			id="modal-delete-currency"
+			id="modal-create-currency"
 			isOpen={isOpen}
 			onOpenChange={onOpenChange}
 		>

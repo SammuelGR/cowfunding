@@ -1,6 +1,6 @@
 import { Cryptocurrency } from '@/models/Currencies';
+import TableUI from '@/components/Table';
 
-import { StyledTable } from './styles';
 import Row from './Row';
 
 interface TableProps {
@@ -9,7 +9,7 @@ interface TableProps {
 
 export default function Table({ currencies }: TableProps) {
 	return (
-		<StyledTable>
+		<TableUI>
 			<thead>
 				<tr>
 					<th>Nome</th>
@@ -25,6 +25,6 @@ export default function Table({ currencies }: TableProps) {
 					<Row key={currency.code} currency={currency} />
 				))}
 			</tbody>
-		</StyledTable>
+		</TableUI>
 	);
 }
