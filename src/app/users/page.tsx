@@ -7,6 +7,7 @@ import CreateDialog from './CreateDialog';
 import PrimaryButton from '@/components/Button/PrimaryButton';
 
 import { StyledContainer } from './styles';
+import Table from './Table';
 
 export default function Users() {
 	const { isOpen, onClose, onOpen, onOpenChange } = useDisclosure();
@@ -27,7 +28,7 @@ export default function Users() {
 			)}
 
 			<StyledContainer>
-				<h1>Users</h1>
+				<Table />
 			</StyledContainer>
 		</>
 	);

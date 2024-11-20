@@ -5,53 +5,47 @@ import {
 	ModalFooter,
 } from '@nextui-org/react';
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import DangerButton from '@/components/Button/DangerButton';
 import PrimaryButton from '@/components/Button/PrimaryButton';
-import Select from '@/components/Input/Select';
 import TextInput from '@/components/Input/TextInput';
 import Modal from '@/components/Modal';
-import { Country } from '@/enums/Country';
-import useUsers from '@/hooks/useUsers';
 import { User } from '@/models/User';
+import useUsers from '@/hooks/useUsers';
+import Select from '@/components/Input/Select';
+import { Country } from '@/enums/Country';
 
-interface CreateDialogProps {
+interface EditProps {
 	isOpen: boolean;
 	onOpenChange: () => void;
 	onRequestToClose: () => void;
+	user: User;
 }
 
-const initialValues: User = {
-	country: Country.Brasil,
-	email: '',
-	fullname: '',
-	id: '',
-	walletAddress: '',
-};
-
-export default function CreateDialog({
+export default function Edit({
 	isOpen,
 	onOpenChange,
 	onRequestToClose,
-}: CreateDialogProps) {
-	const [userForm, setUserForm] = useState<User>(initialValues);
+	user,
+}: EditProps) {
+	const [userForm, setUserForm] = useState(user);
+
 	const { setUsers } = useUsers();
 
 	const formChangeHandler = (field: keyof User, value: User[keyof User]) => {
-		setUserForm((prevUserForm) => {
-			const newUser = { ...prevUserForm };
+		const userData = { ...userForm, [field]: value };
 
-			return { ...newUser, [field]: value };
-		});
+		setUserForm(userData);
 	};
 
-	const onSubmitHandler = () => {
-		userForm.id = uuidv4();
-
+	const submitClickHandler = () => {
 		setUsers((prevUsers) => {
 			const newUsers = [...prevUsers];
-			newUsers.push(userForm);
+
+			const cIndex = newUsers.findIndex(({ id }) => id === user.id);
+
+			const newUser = { ...newUsers[cIndex], ...userForm };
+			newUsers[cIndex] = newUser;
 
 			return newUsers;
 		});
@@ -64,7 +58,7 @@ export default function CreateDialog({
 
 	return (
 		<Modal
-			id="modal-create-user"
+			id="modal-edit-user"
 			isOpen={isOpen}
 			onOpenChange={onOpenChange}
 			size="sm"
@@ -73,48 +67,42 @@ export default function CreateDialog({
 				{(onClose) => (
 					<>
 						<ModalHeader className="flex flex-col gap-1">
-							Criar novo usuário
+							Editar usuário
 						</ModalHeader>
 
-						<ModalBody>
+						<ModalBody className="py-6 flex">
 							<TextInput
-								label="Nome completo"
-								id="fullname"
+								autoComplete="name"
+								label="Nome"
+								value={userForm.fullname}
 								onChange={(event) =>
 									formChangeHandler('fullname', event.target.value)
 								}
-								value={userForm.fullname}
 							/>
 
 							<TextInput
+								autoComplete="email"
 								label="Email"
-								id="email"
+								value={userForm.email}
 								onChange={(event) =>
 									formChangeHandler('email', event.target.value)
 								}
-								value={userForm.email}
 							/>
 
 							<TextInput
-								aria-autocomplete="none"
 								autoComplete="new-off"
 								label="Endereço da carteira principal"
-								id="wallet"
-								onChange={(event) =>
-									formChangeHandler(
-										'walletAddress',
-										event.target.value.replace(' ', ''),
-									)
-								}
 								value={userForm.walletAddress}
+								onChange={(event) =>
+									formChangeHandler('walletAddress', event.target.value)
+								}
 							/>
-
 							<Select
+								defaultValue={userForm.country}
 								label="País de residência"
 								onChange={(event) =>
 									formChangeHandler('country', event.target.value)
 								}
-								defaultValue={initialValues.country}
 							>
 								{Object.entries(Country).map(([key, country]) => (
 									<option key={key} value={country}>
@@ -127,7 +115,7 @@ export default function CreateDialog({
 						<ModalFooter>
 							<DangerButton onClick={onClose}>Cancelar</DangerButton>
 
-							<PrimaryButton disabled={!isValid} onClick={onSubmitHandler}>
+							<PrimaryButton disabled={!isValid} onClick={submitClickHandler}>
 								Salvar
 							</PrimaryButton>
 						</ModalFooter>
