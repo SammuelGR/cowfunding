@@ -1,10 +1,13 @@
 import TableUI from '@/components/Table';
-import useUsers from '@/hooks/useUsers';
+import { User } from '@/models/User';
+
 import Row from './Row';
 
-export default function Table() {
-	const { users } = useUsers();
+interface TableProps {
+	users: User[];
+}
 
+export default function Table({ users }: TableProps) {
 	return (
 		<TableUI>
 			<thead>
