@@ -6,6 +6,7 @@ import { StyledContainer, StyledLink, StyledSeedButton } from './styles';
 import { useSeeds } from '@/seeds/useSeeds';
 
 const links = [
+	{ name: 'Auth', href: '/auth' },
 	{ name: 'Moedas', href: '/cryptocurrencies' },
 	{ name: 'Usuários', href: '/users' },
 ];
