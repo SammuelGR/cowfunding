@@ -27,6 +27,7 @@ const initialValues: User = {
 	email: '',
 	fullname: '',
 	id: '',
+	password: '',
 	walletAddress: '',
 };
 
