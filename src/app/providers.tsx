@@ -1,14 +1,18 @@
 'use client';
 
+import { NextUIProvider } from '@nextui-org/react';
+
+import { AuthProvider } from '@/hooks/useAuth';
 import { CurrenciesProvider } from '@/hooks/useCurrencies';
 import { UsersProvider } from '@/hooks/useUsers';
-import { NextUIProvider } from '@nextui-org/react';
 
 export default function Providers({ children }: React.PropsWithChildren) {
 	return (
 		<NextUIProvider>
 			<CurrenciesProvider>
-				<UsersProvider>{children}</UsersProvider>
+				<UsersProvider>
+					<AuthProvider>{children}</AuthProvider>
+				</UsersProvider>
 			</CurrenciesProvider>
 		</NextUIProvider>
 	);

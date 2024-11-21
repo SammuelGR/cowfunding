@@ -24,16 +24,10 @@ export default function Delete({
 	onRequestToClose,
 	user,
 }: EditProps) {
-	const { setUsers } = useUsers();
+	const { deleteUser } = useUsers();
 
 	const confirmClickHandler = () => {
-		setUsers((prevUsers) => {
-			const newUsers = [...prevUsers];
-
-			const cIndex = newUsers.findIndex(({ id }) => id === user.id);
-
-			return newUsers.toSpliced(cIndex, 1);
-		});
+		deleteUser(user.id);
 
 		onRequestToClose();
 	};

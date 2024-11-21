@@ -4,15 +4,20 @@ import Image from 'next/image';
 import vakenha from './vakenha.png';
 import { StyledContainer, StyledLink, StyledSeedButton } from './styles';
 import { useSeeds } from '@/seeds/useSeeds';
-
-const links = [
-	{ name: 'Auth', href: '/auth' },
-	{ name: 'Moedas', href: '/cryptocurrencies' },
-	{ name: 'Usuários', href: '/users' },
-];
+import useAuth from '@/hooks/useAuth';
 
 export default function Home() {
 	const { seedData } = useSeeds();
+	const { connectedUser, signOut } = useAuth();
+
+	const links = [
+		{ name: 'Moedas', href: '/cryptocurrencies' },
+		{ name: 'Usuários', href: '/users' },
+	];
+
+	if (!connectedUser) {
+		links.unshift({ name: 'Login', href: '/auth' });
+	}
 
 	return (
 		<StyledContainer>
@@ -31,6 +36,10 @@ export default function Home() {
 			))}
 
 			<StyledSeedButton onClick={() => seedData()}>Seed</StyledSeedButton>
+
+			{!!connectedUser && (
+				<StyledSeedButton onClick={signOut}>Sair</StyledSeedButton>
+			)}
 		</StyledContainer>
 	);
 }
