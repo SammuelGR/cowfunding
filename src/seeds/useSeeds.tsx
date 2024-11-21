@@ -5,11 +5,11 @@ import { usersMock } from '@/mocks/users';
 import currenciesMock from '@/mocks/currencies.json';
 
 export const useSeeds = () => {
-	const { setUsers } = useUsers();
+	const { createUser } = useUsers();
 	const { setCurrencies } = useCurrencies();
 
 	const seedData = () => {
-		setUsers(usersMock);
+		usersMock.forEach((user) => createUser(user));
 		setCurrencies(currenciesMock);
 	};
 

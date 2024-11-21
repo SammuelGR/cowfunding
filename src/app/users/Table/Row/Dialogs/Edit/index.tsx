@@ -30,7 +30,7 @@ export default function Edit({
 }: EditProps) {
 	const [userForm, setUserForm] = useState(user);
 
-	const { setUsers } = useUsers();
+	const { editUser } = useUsers();
 
 	const formChangeHandler = (field: keyof User, value: User[keyof User]) => {
 		const userData = { ...userForm, [field]: value };
@@ -39,16 +39,7 @@ export default function Edit({
 	};
 
 	const submitClickHandler = () => {
-		setUsers((prevUsers) => {
-			const newUsers = [...prevUsers];
-
-			const cIndex = newUsers.findIndex(({ id }) => id === user.id);
-
-			const newUser = { ...newUsers[cIndex], ...userForm };
-			newUsers[cIndex] = newUser;
-
-			return newUsers;
-		});
+		editUser(userForm);
 
 		onRequestToClose();
 	};
