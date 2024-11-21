@@ -1,5 +1,3 @@
-'use client';
-
 import React, { createContext, useContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -19,7 +17,10 @@ const UsersContext = createContext<UsersProviderProps | null>(null);
 
 export const UsersProvider = ({ children }: React.PropsWithChildren) => {
 	const getStoredUsers = (): User[] => {
-		const storedUser = localStorage.getItem(usersStorageKey);
+		const storedUser =
+			typeof window !== 'undefined'
+				? localStorage.getItem(usersStorageKey)
+				: undefined;
 		return !!storedUser ? JSON.parse(storedUser) : [];
 	};
 

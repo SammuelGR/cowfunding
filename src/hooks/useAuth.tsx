@@ -1,5 +1,3 @@
-'use client';
-
 import React, { createContext, useContext, useState } from 'react';
 
 import useUsers from '@/hooks/useUsers';
@@ -19,7 +17,10 @@ const AuthContext = createContext<AuthProviderProps | null>(null);
 
 export const AuthProvider = ({ children }: React.PropsWithChildren) => {
 	const getConnectedUser = (): User | null => {
-		const storedUser = localStorage.getItem(signInStorageKey);
+		const storedUser =
+			typeof window !== 'undefined'
+				? localStorage.getItem(signInStorageKey)
+				: null;
 		return !!storedUser ? JSON.parse(storedUser) : null;
 	};
 
