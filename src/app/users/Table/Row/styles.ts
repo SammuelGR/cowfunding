@@ -7,7 +7,7 @@ export const StyledTr = styled.tr`
 `;
 
 export const StyledTd = styled.td`
-	min-height: 64px;
+	height: 64px;
 `;
 
 export const StyledButtonsContainer = styled.div`
