@@ -5,5 +5,6 @@ export interface User {
 	email: string;
 	fullname: string;
 	id: string;
+	password: string;
 	walletAddress: string;
 }

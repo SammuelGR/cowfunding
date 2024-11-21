@@ -4,11 +4,14 @@ import {
 	ModalBody,
 	ModalFooter,
 } from '@nextui-org/react';
+import { redirect } from 'next/navigation';
+import { useState } from 'react';
 
 import DangerButton from '@/components/Button/DangerButton';
 import PrimaryButton from '@/components/Button/PrimaryButton';
 import TextInput from '@/components/Input/TextInput';
 import Modal from '@/components/Modal';
+import useAuth, { type SignInData } from '@/hooks/useAuth';
 
 interface SignInProps {
 	isOpen: boolean;
@@ -16,13 +19,33 @@ interface SignInProps {
 	onRequestToClose: () => void;
 }
 
-export default function SignIn({
-	isOpen,
-	onOpenChange,
-	onRequestToClose,
-}: SignInProps) {
+const initialValues: SignInData = {
+	email: '',
+	password: '',
+};
+
+export default function SignIn({ isOpen, onOpenChange }: SignInProps) {
+	const [authForm, setAuthForm] = useState<SignInData>(initialValues);
+
+	const { signIn } = useAuth();
+
+	const formChangeHandler = (
+		field: keyof SignInData,
+		value: SignInData[keyof SignInData],
+	) => {
+		setAuthForm((prevData) => {
+			const newData = { ...prevData };
+
+			return { ...newData, [field]: value };
+		});
+	};
+
 	const submitClickHandler = () => {
-		onRequestToClose();
+		if (signIn(authForm)) {
+			redirect('/');
+		} else {
+			alert('Usuário não encontrado!');
+		}
 	};
 
 	return (
@@ -42,6 +65,10 @@ export default function SignIn({
 								autoComplete="email"
 								label="Email"
 								id="email"
+								onChange={(event) =>
+									formChangeHandler('email', event.target.value)
+								}
+								value={authForm.email}
 								type="email"
 							/>
 
@@ -49,6 +76,10 @@ export default function SignIn({
 								autoComplete="current-password"
 								id="password"
 								label="Senha"
+								onChange={(event) =>
+									formChangeHandler('password', event.target.value)
+								}
+								value={authForm.password}
 								type="password"
 							/>
 						</ModalBody>

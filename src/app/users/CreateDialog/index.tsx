@@ -27,6 +27,7 @@ const initialValues: User = {
 	email: '',
 	fullname: '',
 	id: '',
+	password: '',
 	walletAddress: '',
 };
 
@@ -36,7 +37,7 @@ export default function CreateDialog({
 	onRequestToClose,
 }: CreateDialogProps) {
 	const [userForm, setUserForm] = useState<User>(initialValues);
-	const { setUsers } = useUsers();
+	const { createUser } = useUsers();
 
 	const formChangeHandler = (field: keyof User, value: User[keyof User]) => {
 		setUserForm((prevUserForm) => {
@@ -49,12 +50,7 @@ export default function CreateDialog({
 	const onSubmitHandler = () => {
 		userForm.id = uuidv4();
 
-		setUsers((prevUsers) => {
-			const newUsers = [...prevUsers];
-			newUsers.push(userForm);
-
-			return newUsers;
-		});
+		createUser(userForm);
 
 		onRequestToClose();
 	};

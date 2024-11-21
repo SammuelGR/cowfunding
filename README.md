@@ -1,5 +1,7 @@
 # DRE - Cowfunding
 
+Layout: https://www.figma.com/design/XaudQXub9gJAJsIjtJDtxa/Cowfunding1
+
 ## Documento de Requisitos de Software (DRE) – Cowfunding (Crowdfunding com Criptomoedas)
 
 ### 1. Requisitos Funcionais de Cliente
