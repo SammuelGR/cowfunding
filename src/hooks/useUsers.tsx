@@ -11,7 +11,7 @@ export interface UsersProviderProps {
 	users: User[];
 }
 
-const usersStorageKey = '@cowfunding:users';
+export const usersStorageKey = '@cowfunding:users';
 
 const UsersContext = createContext<UsersProviderProps | null>(null);
 
@@ -25,8 +25,8 @@ export const UsersProvider = ({ children }: React.PropsWithChildren) => {
 		setUsers(parsedUsers);
 	}, []);
 
-	const updateUsers = (users: User[]) => {
-		localStorage.setItem(usersStorageKey, JSON.stringify(users));
+	const updateUsers = (newUsers: User[]) => {
+		localStorage.setItem(usersStorageKey, JSON.stringify(newUsers));
 	};
 
 	const createUser = (user: User) => {

@@ -46,7 +46,7 @@ export default function CreateDialog({
 	onRequestToClose,
 }: CreateDialogProps) {
 	const [currency, setCurrency] = useState<Cryptocurrency>(initialValues);
-	const { setCurrencies } = useCurrencies();
+	const { createCurrency } = useCurrencies();
 
 	const networksChangeHandler = (network: string) => {
 		setCurrency((prevCurrency) => {
@@ -78,13 +78,7 @@ export default function CreateDialog({
 	};
 
 	const onSubmitHandler = () => {
-		setCurrencies((prevCurrencies) => {
-			const newCurrencies = [...prevCurrencies];
-
-			newCurrencies.push(currency);
-
-			return newCurrencies;
-		});
+		createCurrency(currency);
 
 		onRequestToClose();
 	};
