@@ -1,7 +1,9 @@
 'use client';
 
-import useAuth from '@/hooks/useAuth';
 import { redirect } from 'next/navigation';
+
+import useAuth from '@/hooks/useAuth';
+
 import Home from './home';
 
 export default function Root() {

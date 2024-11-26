@@ -5,14 +5,13 @@ export const StyledLabel = styled.div`
 	margin-bottom: 8px;
 `;
 
-export const StyledInput = styled.input`
-	color-scheme: dark;
+export const StyledTextArea = styled.textarea`
 	background-color: transparent;
 	border-radius: 4px;
 	border: 3px solid currentColor;
 	box-sizing: border-box;
 	color: currentColor;
 	font-size: 16px;
-	height: 32px;
+	min-height: 64px;
 	padding: 8px;
 `;

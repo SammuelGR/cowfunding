@@ -8,12 +8,11 @@ import { useState } from 'react';
 
 import DangerButton from '@/components/Button/DangerButton';
 import PrimaryButton from '@/components/Button/PrimaryButton';
+import CheckboxGroup, { Checkbox } from '@/components/Input/Checkbox';
 import TextInput from '@/components/Input/TextInput';
 import Modal from '@/components/Modal';
 import useCurrencies from '@/hooks/useCurrencies';
 import { Cryptocurrency } from '@/models/Currencies';
-
-import { StyledCheckboxGroup } from './styles';
 
 interface CreateDialogProps {
 	isOpen: boolean;
@@ -136,22 +135,18 @@ export default function CreateDialog({
 								}
 							/>
 
-							<StyledCheckboxGroup>
-								<label>Redes</label>
-
+							<CheckboxGroup label="Redes">
 								{networks.map((network) => (
-									<label key={network}>
-										{network}
-										<input
-											checked={currency.networks.includes(network)}
-											id={network}
-											name={network}
-											onChange={() => networksChangeHandler(network)}
-											type="checkbox"
-										/>
-									</label>
+									<Checkbox
+										label={network}
+										key={network}
+										checked={currency.networks.includes(network)}
+										id={network}
+										name={network}
+										onChange={() => networksChangeHandler(network)}
+									/>
 								))}
-							</StyledCheckboxGroup>
+							</CheckboxGroup>
 						</ModalBody>
 
 						<ModalFooter>

@@ -1,5 +1,10 @@
+import { useDisclosure } from '@nextui-org/react';
+import Link from 'next/link';
+
 import { notable } from '@/app/ui/fonts';
 import vakenha from '@/app/ui/vakenha.png';
+import useAuth from '@/hooks/useAuth';
+import { useSeeds } from '@/seeds/useSeeds';
 
 import {
 	StyledContainer,
@@ -9,9 +14,7 @@ import {
 	StyledTitle,
 	StyledUserContainer,
 } from './styles';
-import Link from 'next/link';
-import useAuth from '@/hooks/useAuth';
-import { useSeeds } from '@/seeds/useSeeds';
+import Campaign from '../dialogs/Campaign';
 
 type HeaderLink =
 	| {
@@ -31,9 +34,16 @@ export default function Header() {
 	const { connectedUser } = useAuth();
 	const { toggleSeed } = useSeeds();
 
+	const {
+		isOpen: isCampaignOpen,
+		onClose: onCampaignClose,
+		onOpen: onCampaignOpen,
+		onOpenChange: onCampaignOpenChange,
+	} = useDisclosure();
+
 	const links: HeaderLink[] = [
 		{
-			action: () => {},
+			action: onCampaignOpen,
 			label: 'Criar campanha',
 			type: 'button',
 		},
@@ -60,38 +70,49 @@ export default function Header() {
 	];
 
 	return (
-		<StyledContainer>
-			<div className="flex flex-col items-center w-fit">
-				<StyledTitle className={`${notable.className} antialiased block`}>
-					Cowfunding
-				</StyledTitle>
+		<>
+			<StyledContainer>
+				<div className="flex flex-col items-center w-fit">
+					<StyledTitle className={`${notable.className} antialiased block`}>
+						Cowfunding
+					</StyledTitle>
 
-				<StyledImage
-					style={{ display: 'block' }}
-					alt="site logo"
-					src={vakenha}
-					width={168}
-					height={168}
+					<StyledImage
+						style={{ display: 'block' }}
+						alt="site logo"
+						src={vakenha}
+						width={168}
+						height={168}
+					/>
+				</div>
+
+				<StyledNav>
+					{links.map((link) => {
+						return link.type === 'button' ? (
+							<StyledHeaderButton onClick={link.action} key={link.label}>
+								{link.label}
+							</StyledHeaderButton>
+						) : (
+							<Link className="inline h-fit" key={link.label} href={link.url}>
+								<StyledHeaderButton>{link.label}</StyledHeaderButton>
+							</Link>
+						);
+					})}
+				</StyledNav>
+
+				<StyledUserContainer>
+					<span>{connectedUser?.fullname.charAt(0)}</span>
+				</StyledUserContainer>
+			</StyledContainer>
+
+			{isCampaignOpen && (
+				<Campaign
+					isOpen={true}
+					key="create-campaign"
+					onOpenChange={onCampaignOpenChange}
+					onRequestToClose={onCampaignClose}
 				/>
-			</div>
-
-			<StyledNav>
-				{links.map((link) => {
-					return link.type === 'button' ? (
-						<StyledHeaderButton onClick={link.action} key={link.label}>
-							{link.label}
-						</StyledHeaderButton>
-					) : (
-						<Link className="inline h-fit" key={link.label} href={link.url}>
-							<StyledHeaderButton>{link.label}</StyledHeaderButton>
-						</Link>
-					);
-				})}
-			</StyledNav>
-
-			<StyledUserContainer>
-				<span>{connectedUser?.fullname.charAt(0)}</span>
-			</StyledUserContainer>
-		</StyledContainer>
+			)}
+		</>
 	);
 }
