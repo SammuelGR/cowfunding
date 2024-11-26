@@ -19,8 +19,18 @@ export const useSeeds = () => {
 	const clearData = () => {
 		localStorage.removeItem(currenciesStorageKey);
 		localStorage.removeItem(usersStorageKey);
-		localStorage.setItem(seedsStorageKey, JSON.stringify({ hasSeeds: false }));
+		localStorage.removeItem(seedsStorageKey);
 	};
 
-	return { clearData, seedData };
+	const toggleSeed = () => {
+		const hasSeeds = localStorage.getItem(seedsStorageKey);
+
+		if (!!hasSeeds) {
+			clearData();
+		} else {
+			seedData();
+		}
+	};
+
+	return { clearData, seedData, toggleSeed };
 };
