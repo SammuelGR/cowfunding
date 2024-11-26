@@ -26,6 +26,7 @@ export const StyledGroupedInputContainer = styled.div`
 export const StyledCheckboxGroup = styled(CheckboxGroup)`
 	display: flex;
 	flex-wrap: wrap;
+	margin-top: 16px;
 
 	& > label {
 		display: block;
@@ -34,9 +35,10 @@ export const StyledCheckboxGroup = styled(CheckboxGroup)`
 	}
 
 	label:not(:first-of-type) {
-		width: 50%;
 		display: flex;
 		flex-direction: row-reverse;
 		justify-content: flex-end;
+		padding-left: 64px;
+		width: 50%;
 	}
 `;
