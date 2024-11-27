@@ -8,7 +8,7 @@ export type SignInData = Pick<User, 'email' | 'password'>;
 export interface AuthProviderProps {
 	signIn: (data: SignInData) => boolean;
 	signOut: () => void;
-	connectedUser?: User;
+	connectedUser?: User | null;
 }
 
 const signInStorageKey = '@cowfunding:signin';
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
 			value={{
 				signIn,
 				signOut,
-				connectedUser: connectedUser ?? undefined,
+				connectedUser,
 			}}
 		>
 			{children}

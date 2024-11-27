@@ -2,6 +2,7 @@
 
 import { useDisclosure } from '@nextui-org/react';
 import Image from 'next/image';
+import { useEffect } from 'react';
 
 import { notable } from '@/app/ui/fonts';
 import vakenha from '@/app/ui/vakenha.png';
@@ -12,6 +13,7 @@ import { StyledButtonsGroup, StyledContainer, StyledTitle } from './styles';
 import SignIn from './Dialogs/SignIn';
 import SignUp from './Dialogs/SignUp';
 import { redirect } from 'next/navigation';
+import usePrevious from '@/hooks/usePrevious';
 
 export default function Auth() {
 	const {
@@ -29,10 +31,13 @@ export default function Auth() {
 	} = useDisclosure();
 
 	const { connectedUser } = useAuth();
+	const prevConnectedUser = usePrevious(connectedUser);
 
-	if (!!connectedUser) {
-		redirect('/');
-	}
+	useEffect(() => {
+		if (!!connectedUser && connectedUser !== prevConnectedUser) {
+			redirect('/');
+		}
+	}, [connectedUser, prevConnectedUser]);
 
 	return (
 		<StyledContainer>
