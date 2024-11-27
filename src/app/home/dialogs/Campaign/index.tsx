@@ -10,12 +10,14 @@ import { v4 as uuidv4 } from 'uuid';
 
 import DangerButton from '@/components/Button/DangerButton';
 import PrimaryButton from '@/components/Button/PrimaryButton';
+import { Checkbox } from '@/components/Input/Checkbox';
 import TextInput from '@/components/Input/TextInput';
 import Modal from '@/components/Modal';
 import useAuth from '@/hooks/useAuth';
-import { Campaign as CampaignModel } from '@/models/Campaign';
-import { Checkbox } from '@/components/Input/Checkbox';
+import useCampaigns from '@/hooks/useCampaign';
 import useCurrencies from '@/hooks/useCurrencies';
+import { Campaign as CampaignModel } from '@/models/Campaign';
+import { Cryptocurrency } from '@/models/Currencies';
 
 import {
 	StyledCheckboxGroup,
@@ -33,7 +35,7 @@ interface CampaignProps {
 const initialValues: CampaignModel = {
 	acceptedCurrencies: [],
 	description: '',
-	endDate: new Date(),
+	endDate: dayjs().add(1, 'day').format('YYYY-MM-DD'),
 	goalAmount: 0,
 	id: '',
 	receivedAmount: 0,
@@ -53,6 +55,8 @@ export default function Campaign({
 
 	const { currencies } = useCurrencies();
 
+	const { createCampaign } = useCampaigns();
+
 	const minDate = dayjs().add(1, 'day').format('YYYY-MM-DD');
 	const maxDate = dayjs().add(365, 'day').format('YYYY-MM-DD');
 
@@ -67,15 +71,38 @@ export default function Campaign({
 		});
 	};
 
-	const submitClickHandler = () => {
+	const currenciesChangeHandler = (currency: Cryptocurrency) => {
+		const selectedCurrencies = [...campaignForm.acceptedCurrencies];
+
+		const cIndex = selectedCurrencies.indexOf(currency);
+		if (cIndex < 0) {
+			selectedCurrencies.push(currency);
+		} else {
+			selectedCurrencies.splice(cIndex, 1);
+		}
+
 		setCampaignForm((prevForm) => ({
 			...prevForm,
+			acceptedCurrencies: selectedCurrencies,
+		}));
+	};
+
+	const submitClickHandler = () => {
+		createCampaign({
+			...campaignForm,
 			userId: connectedUser!.id,
 			id: uuidv4(),
-		}));
+		});
 
 		onRequestToClose();
 	};
+
+	const isValid =
+		campaignForm.acceptedCurrencies.length > 0 &&
+		!!campaignForm.description &&
+		!!campaignForm.endDate &&
+		!!campaignForm.goalAmount &&
+		!!campaignForm.title;
 
 	return (
 		<Modal
@@ -101,22 +128,46 @@ export default function Campaign({
 								value={campaignForm.title}
 							/>
 
-							<StyledTextArea label="Descrição" />
+							<StyledTextArea
+								label="Descrição"
+								onChange={(event) =>
+									formChangeHandler('description', event.target.value)
+								}
+								value={campaignForm.description}
+							/>
 
 							<StyledGroupedInputContainer>
-								<TextInput label="Meta de arrecadação (USD)" type="number" />
+								<TextInput
+									label="Meta de arrecadação (USD)"
+									onChange={(event) =>
+										formChangeHandler('goalAmount', +event.target.value)
+									}
+									type="number"
+									value={campaignForm.goalAmount}
+								/>
 
 								<StyledTextInput
 									label="Prazo"
 									max={maxDate}
 									min={minDate}
+									onChange={(event) =>
+										formChangeHandler('endDate', event.target.value)
+									}
+									value={dayjs(campaignForm.endDate).format('YYYY-MM-DD')}
 									type="date"
 								/>
 							</StyledGroupedInputContainer>
 
 							<StyledCheckboxGroup label="Criptomoedas aceitas">
 								{currencies.map((currency) => (
-									<Checkbox key={currency.code} label={currency.name} />
+									<Checkbox
+										checked={campaignForm.acceptedCurrencies.includes(currency)}
+										id={currency.name}
+										key={currency.code}
+										label={currency.name}
+										name={currency.name}
+										onChange={() => currenciesChangeHandler(currency)}
+									/>
 								))}
 							</StyledCheckboxGroup>
 						</ModalBody>
@@ -124,7 +175,9 @@ export default function Campaign({
 						<ModalFooter>
 							<DangerButton onClick={onClose}>Cancelar</DangerButton>
 
-							<PrimaryButton onClick={submitClickHandler}>Salvar</PrimaryButton>
+							<PrimaryButton disabled={!isValid} onClick={submitClickHandler}>
+								Salvar
+							</PrimaryButton>
 						</ModalFooter>
 					</>
 				)}
