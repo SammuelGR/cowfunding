@@ -11,15 +11,16 @@ import {
 	StyledCurrenciesTitle,
 	StyledCurrencyName,
 	StyledDescriptionContainer,
+	StyledDetailsButton,
 	StyledFooter,
 	StyledHr,
-	StyledNameContainer,
 	StyledNameText,
 	StyledPrimaryButton,
 	StyledSideContent,
 	StyledTitle,
 } from './styles';
 import Donation from './dialogs/Donation';
+import Details from './dialogs/Details';
 
 interface CardProps {
 	campaign: Campaign;
@@ -33,6 +34,12 @@ export default function Card({ campaign }: CardProps) {
 		onClose: onDonationClose,
 		onOpen: onDonationOpen,
 		onOpenChange: onDonationOpenChange,
+	} = useDisclosure();
+
+	const {
+		isOpen: isDetailsOpen,
+		onOpen: onDetailsOpen,
+		onOpenChange: onDetailsOpenChange,
 	} = useDisclosure();
 
 	const campaignStatus =
@@ -50,11 +57,15 @@ export default function Card({ campaign }: CardProps) {
 				<StyledTitle>{campaign.title}</StyledTitle>
 
 				<StyledContent>
-					<StyledNameContainer>
+					<StyledSideContent>
 						<StyledNameText>
 							{users.find((user) => user.id === campaign.userId)?.fullname}
 						</StyledNameText>
-					</StyledNameContainer>
+
+						<StyledDetailsButton onClick={onDetailsOpen}>
+							Detalhes
+						</StyledDetailsButton>
+					</StyledSideContent>
 
 					<StyledDescriptionContainer>
 						{campaign.description}
@@ -111,6 +122,15 @@ export default function Card({ campaign }: CardProps) {
 					key="create-donation"
 					onOpenChange={onDonationOpenChange}
 					onRequestToClose={onDonationClose}
+				/>
+			)}
+
+			{isDetailsOpen && (
+				<Details
+					isOpen={true}
+					campaign={campaign}
+					key="campaign-details"
+					onOpenChange={onDetailsOpenChange}
 				/>
 			)}
 		</>

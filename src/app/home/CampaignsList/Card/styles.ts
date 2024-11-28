@@ -26,12 +26,6 @@ export const StyledContent = styled.div`
 	margin-top: 16px;
 `;
 
-export const StyledNameContainer = styled.div`
-	display: flex;
-	margin: 0;
-	padding-left: 8px;
-`;
-
 export const StyledNameText = styled.p`
 	align-items: center;
 	background-color: #d9d9d9;
@@ -58,6 +52,7 @@ export const StyledDescriptionContainer = styled.div`
 
 export const StyledSideContent = styled.div`
 	display: flex;
+	align-items: center;
 	flex-direction: column;
 	width: 100%;
 `;
@@ -98,6 +93,18 @@ export const StyledPrimaryButton = styled(PrimaryButton)`
 
 	&:hover {
 		background-color: #2cb459;
+	}
+`;
+
+export const StyledDetailsButton = styled(PrimaryButton)`
+	align-self: center;
+	background-color: #d9d9d9;
+	margin-top: 32px;
+	width: 120px;
+	height: 64px;
+
+	&:hover {
+		background-color: #b9b9b9;
 	}
 `;
 
