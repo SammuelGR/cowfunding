@@ -1,4 +1,4 @@
-import { useDisclosure } from '@nextui-org/react';
+import { Tooltip, useDisclosure } from '@nextui-org/react';
 import Link from 'next/link';
 
 import { notable } from '@/app/ui/fonts';
@@ -31,7 +31,7 @@ type HeaderLink =
 	  };
 
 export default function Header() {
-	const { connectedUser } = useAuth();
+	const { connectedUser, signOut } = useAuth();
 	const { toggleSeed } = useSeeds();
 
 	const {
@@ -100,9 +100,21 @@ export default function Header() {
 					})}
 				</StyledNav>
 
-				<StyledUserContainer>
-					<span>{connectedUser?.fullname.charAt(0)}</span>
-				</StyledUserContainer>
+				<Tooltip
+					color="danger"
+					content={
+						<span className="cursor-pointer" onClick={signOut}>
+							Sair
+						</span>
+					}
+					offset={-20}
+					placement="bottom"
+					showArrow={true}
+				>
+					<StyledUserContainer>
+						<span>{connectedUser?.fullname.charAt(0)}</span>
+					</StyledUserContainer>
+				</Tooltip>
 			</StyledContainer>
 
 			{isCampaignOpen && (
