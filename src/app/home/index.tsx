@@ -1,3 +1,4 @@
+import CampaignsList from './CampaignsList';
 import Header from './Header';
 import SideList from './SideList';
 import { StyledCampaignsList, StyledContainer, StyledContent } from './styles';
@@ -10,6 +11,8 @@ export default function Home() {
 
 				<StyledCampaignsList>
 					<SideList />
+
+					<CampaignsList />
 				</StyledCampaignsList>
 			</StyledContent>
 		</StyledContainer>

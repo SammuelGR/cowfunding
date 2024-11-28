@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import { User } from '@/models/User';
 
@@ -30,8 +29,6 @@ export const UsersProvider = ({ children }: React.PropsWithChildren) => {
 	};
 
 	const createUser = (user: User) => {
-		user.id = uuidv4();
-
 		setUsers((prevUsers) => {
 			const newUsers = [...prevUsers];
 
