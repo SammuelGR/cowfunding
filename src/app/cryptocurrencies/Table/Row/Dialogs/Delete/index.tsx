@@ -24,18 +24,10 @@ export default function Delete({
 	onOpenChange,
 	onRequestToClose,
 }: EditProps) {
-	const { setCurrencies } = useCurrencies();
+	const { deleteCurrency } = useCurrencies();
 
 	const confirmClickHandler = () => {
-		setCurrencies((prevCurrencies) => {
-			const newCurrencies = [...prevCurrencies];
-
-			const cIndex = newCurrencies.findIndex(
-				({ code }) => code === currency.code,
-			);
-
-			return newCurrencies.toSpliced(cIndex, 1);
-		});
+		deleteCurrency(currency.code);
 
 		onRequestToClose();
 	};

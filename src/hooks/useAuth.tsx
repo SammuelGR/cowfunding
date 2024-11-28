@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import useUsers from '@/hooks/useUsers';
 import { User } from '@/models/User';
@@ -8,7 +8,7 @@ export type SignInData = Pick<User, 'email' | 'password'>;
 export interface AuthProviderProps {
 	signIn: (data: SignInData) => boolean;
 	signOut: () => void;
-	connectedUser?: User;
+	connectedUser?: User | null;
 }
 
 const signInStorageKey = '@cowfunding:signin';
@@ -16,17 +16,14 @@ const signInStorageKey = '@cowfunding:signin';
 const AuthContext = createContext<AuthProviderProps | null>(null);
 
 export const AuthProvider = ({ children }: React.PropsWithChildren) => {
-	const getConnectedUser = (): User | null => {
-		const storedUser =
-			typeof window !== 'undefined'
-				? localStorage.getItem(signInStorageKey)
-				: null;
-		return !!storedUser ? JSON.parse(storedUser) : null;
-	};
+	const [connectedUser, setConnectedUser] = useState<User | null>(null);
 
-	const [connectedUser, setConnectedUser] = useState<User | null>(
-		getConnectedUser(),
-	);
+	useEffect(() => {
+		const storedUser = localStorage.getItem(signInStorageKey);
+		const parsedUser = !!storedUser ? JSON.parse(storedUser) : null;
+
+		setConnectedUser(parsedUser);
+	}, []);
 
 	const { users } = useUsers();
 
@@ -53,7 +50,7 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
 			value={{
 				signIn,
 				signOut,
-				connectedUser: connectedUser ?? undefined,
+				connectedUser,
 			}}
 		>
 			{children}

@@ -1,16 +1,21 @@
 import { StyledInput, StyledLabel } from './styles';
 
 interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-	label: React.ReactNode;
+	className?: string;
+	label?: React.ReactNode;
 }
 
-export default function TextInput({ label, ...inputProps }: TextInputProps) {
+export default function TextInput({
+	className,
+	label,
+	...inputProps
+}: TextInputProps) {
 	return (
 		<>
 			<label>
-				<StyledLabel>{label}</StyledLabel>
+				{label && <StyledLabel>{label}</StyledLabel>}
 
-				<StyledInput type="text" {...inputProps} />
+				<StyledInput className={className} type="text" {...inputProps} />
 			</label>
 		</>
 	);

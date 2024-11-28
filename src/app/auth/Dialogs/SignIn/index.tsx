@@ -44,7 +44,7 @@ export default function SignIn({ isOpen, onOpenChange }: SignInProps) {
 		if (signIn(authForm)) {
 			redirect('/');
 		} else {
-			alert('Usuário não encontrado!');
+			alert('Credenciais inválidas!');
 		}
 	};
 

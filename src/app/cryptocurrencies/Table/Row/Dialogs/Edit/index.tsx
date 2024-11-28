@@ -29,22 +29,13 @@ export default function Edit({
 }: EditProps) {
 	const [currencyName, setCurrencyName] = useState(currency.name);
 	const [decimalPlaces, setDecimalPlaces] = useState(currency.decimalPlaces);
-	const { setCurrencies } = useCurrencies();
+	const { editCurrency } = useCurrencies();
 
 	const submitClickHandler = () => {
-		setCurrencies((prevCurrencies) => {
-			const newCurrencies = [...prevCurrencies];
-
-			const cIndex = newCurrencies.findIndex(
-				({ code }) => code === currency.code,
-			);
-
-			const newCurrency = prevCurrencies[cIndex];
-			newCurrency.decimalPlaces = decimalPlaces;
-			newCurrency.name = currencyName;
-			newCurrencies[cIndex] = newCurrency;
-
-			return newCurrencies;
+		editCurrency({
+			...currency,
+			name: currencyName,
+			decimalPlaces,
 		});
 
 		onRequestToClose();
