@@ -13,3 +13,8 @@ export const StyledContent = styled.div`
 	border-radius: 8px;
 	min-height: calc(100vh - ${containerPadding * 2}px);
 `;
+
+export const StyledCampaignsList = styled.div`
+	display: flex;
+	padding: 0 16px 16px;
+`;

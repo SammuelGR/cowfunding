@@ -30,7 +30,7 @@ export const campaignsMock: Campaign[] = [
 	{
 		acceptedCurrencies: ['ADA', 'ETH'],
 		description: 'Fornecer acesso à internet em áreas remotas.',
-		endDate: new Date('2024-11-30'),
+		endDate: new Date('2024-12-04'),
 		goalAmount: 75000,
 		id: uuidv4(),
 		receivedAmount: 60000,
@@ -40,7 +40,7 @@ export const campaignsMock: Campaign[] = [
 	{
 		acceptedCurrencies: ['BTC', 'XRP'],
 		description: 'Fornecimento de alimentos e água para famílias desabrigadas.',
-		endDate: new Date('2024-10-15'),
+		endDate: new Date('2024-12-15'),
 		goalAmount: 30000,
 		id: uuidv4(),
 		receivedAmount: 12000,
@@ -50,7 +50,7 @@ export const campaignsMock: Campaign[] = [
 	{
 		acceptedCurrencies: ['ETH', 'USDT'],
 		description: 'Financiamento de tratamentos médicos gratuitos.',
-		endDate: new Date('2024-09-20'),
+		endDate: new Date('2025-09-20'),
 		goalAmount: 90000,
 		id: uuidv4(),
 		receivedAmount: 75000,
@@ -60,7 +60,7 @@ export const campaignsMock: Campaign[] = [
 	{
 		acceptedCurrencies: ['SOL', 'ADA'],
 		description: 'Campanha para financiar produções culturais.',
-		endDate: new Date('2024-08-31'),
+		endDate: new Date('2025-08-31'),
 		goalAmount: 25000,
 		id: uuidv4(),
 		receivedAmount: 5000,
@@ -70,7 +70,7 @@ export const campaignsMock: Campaign[] = [
 	{
 		acceptedCurrencies: ['BTC', 'ETH', 'USDC'],
 		description: 'Financiar startups de energia renovável.',
-		endDate: new Date('2025-02-10'),
+		endDate: new Date('2025-02-01'),
 		goalAmount: 150000,
 		id: uuidv4(),
 		receivedAmount: 100000,
@@ -80,7 +80,7 @@ export const campaignsMock: Campaign[] = [
 	{
 		acceptedCurrencies: ['BTC', 'USDT'],
 		description: 'Ajudar ONGs a resgatar e cuidar de animais de rua.',
-		endDate: new Date('2024-11-10'),
+		endDate: new Date('2025-03-10'),
 		goalAmount: 40000,
 		id: uuidv4(),
 		receivedAmount: 20000,
@@ -90,7 +90,7 @@ export const campaignsMock: Campaign[] = [
 	{
 		acceptedCurrencies: ['SOL', 'ETH'],
 		description: 'Ensinar idosos a usar tecnologias modernas.',
-		endDate: new Date('2024-07-25'),
+		endDate: new Date('2025-01-25'),
 		goalAmount: 10000,
 		id: uuidv4(),
 		receivedAmount: 7500,
@@ -100,7 +100,7 @@ export const campaignsMock: Campaign[] = [
 	{
 		acceptedCurrencies: ['BTC', 'ADA', 'USDC'],
 		description: 'Construção de centros de reciclagem em cidades pequenas.',
-		endDate: new Date('2024-06-30'),
+		endDate: new Date('2025-06-30'),
 		goalAmount: 50000,
 		id: uuidv4(),
 		receivedAmount: 45000,

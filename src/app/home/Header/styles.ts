@@ -3,8 +3,10 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 export const StyledContainer = styled.header`
+	border-bottom: 3px solid #babaca;
 	display: flex;
 	flex-direction: row;
+	margin: 0 24px;
 	padding: 16px;
 `;
 
