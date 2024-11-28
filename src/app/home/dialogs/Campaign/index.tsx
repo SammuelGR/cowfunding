@@ -71,12 +71,12 @@ export default function Campaign({
 		});
 	};
 
-	const currenciesChangeHandler = (currency: Cryptocurrency) => {
+	const currenciesChangeHandler = (currencyCode: Cryptocurrency['code']) => {
 		const selectedCurrencies = [...campaignForm.acceptedCurrencies];
 
-		const cIndex = selectedCurrencies.indexOf(currency);
+		const cIndex = selectedCurrencies.indexOf(currencyCode);
 		if (cIndex < 0) {
-			selectedCurrencies.push(currency);
+			selectedCurrencies.push(currencyCode);
 		} else {
 			selectedCurrencies.splice(cIndex, 1);
 		}
@@ -161,12 +161,14 @@ export default function Campaign({
 							<StyledCheckboxGroup label="Criptomoedas aceitas">
 								{currencies.map((currency) => (
 									<Checkbox
-										checked={campaignForm.acceptedCurrencies.includes(currency)}
+										checked={campaignForm.acceptedCurrencies.includes(
+											currency.code,
+										)}
 										id={currency.name}
 										key={currency.code}
 										label={currency.name}
 										name={currency.name}
-										onChange={() => currenciesChangeHandler(currency)}
+										onChange={() => currenciesChangeHandler(currency.code)}
 									/>
 								))}
 							</StyledCheckboxGroup>

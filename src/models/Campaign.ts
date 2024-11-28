@@ -1,7 +1,7 @@
 import { Cryptocurrency } from './Currencies';
 
 export interface Campaign {
-	acceptedCurrencies: Cryptocurrency[];
+	acceptedCurrencies: Cryptocurrency['code'][];
 	description: string;
 	endDate: Date | string;
 	goalAmount: number;
