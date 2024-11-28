@@ -31,7 +31,13 @@ export const CampaignsProvider = ({ children }: React.PropsWithChildren) => {
 		localStorage.setItem(campaignsStorageKey, JSON.stringify(newCampaigns));
 	};
 
+	const calculateReceivedAmount = (campaign: Campaign) => {
+		return campaign.donations.reduce((acc, curr) => acc + curr.usdAmount, 0);
+	};
+
 	const createCampaign = (newCampaign: Campaign) => {
+		newCampaign.receivedAmount = calculateReceivedAmount(newCampaign);
+
 		setCampaigns((prevCampaigns) => {
 			const newCampaigns = [...prevCampaigns];
 
@@ -44,6 +50,8 @@ export const CampaignsProvider = ({ children }: React.PropsWithChildren) => {
 	};
 
 	const editCampaign = (newCampaign: Campaign) => {
+		newCampaign.receivedAmount = calculateReceivedAmount(newCampaign);
+
 		setCampaigns((prevCampaigns) => {
 			const newCampaigns = [...prevCampaigns];
 

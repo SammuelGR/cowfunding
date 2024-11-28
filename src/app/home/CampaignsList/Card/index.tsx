@@ -1,3 +1,4 @@
+import { useDisclosure } from '@nextui-org/react';
 import dayjs from 'dayjs';
 
 import useUsers from '@/hooks/useUsers';
@@ -10,14 +11,16 @@ import {
 	StyledCurrenciesTitle,
 	StyledCurrencyName,
 	StyledDescriptionContainer,
+	StyledDetailsButton,
 	StyledFooter,
 	StyledHr,
-	StyledNameContainer,
 	StyledNameText,
 	StyledPrimaryButton,
 	StyledSideContent,
 	StyledTitle,
 } from './styles';
+import Donation from './dialogs/Donation';
+import Details from './dialogs/Details';
 
 interface CardProps {
 	campaign: Campaign;
@@ -25,6 +28,19 @@ interface CardProps {
 
 export default function Card({ campaign }: CardProps) {
 	const { users } = useUsers();
+
+	const {
+		isOpen: isDonationOpen,
+		onClose: onDonationClose,
+		onOpen: onDonationOpen,
+		onOpenChange: onDonationOpenChange,
+	} = useDisclosure();
+
+	const {
+		isOpen: isDetailsOpen,
+		onOpen: onDetailsOpen,
+		onOpenChange: onDetailsOpenChange,
+	} = useDisclosure();
 
 	const campaignStatus =
 		campaign.receivedAmount === campaign.goalAmount
@@ -41,11 +57,15 @@ export default function Card({ campaign }: CardProps) {
 				<StyledTitle>{campaign.title}</StyledTitle>
 
 				<StyledContent>
-					<StyledNameContainer>
+					<StyledSideContent>
 						<StyledNameText>
 							{users.find((user) => user.id === campaign.userId)?.fullname}
 						</StyledNameText>
-					</StyledNameContainer>
+
+						<StyledDetailsButton onClick={onDetailsOpen}>
+							Detalhes
+						</StyledDetailsButton>
+					</StyledSideContent>
 
 					<StyledDescriptionContainer>
 						{campaign.description}
@@ -64,7 +84,9 @@ export default function Card({ campaign }: CardProps) {
 							))}
 						</StyledCurrenciesContainer>
 
-						<StyledPrimaryButton>Doar</StyledPrimaryButton>
+						<StyledPrimaryButton onClick={onDonationOpen}>
+							Doar
+						</StyledPrimaryButton>
 					</StyledSideContent>
 				</StyledContent>
 
@@ -92,6 +114,25 @@ export default function Card({ campaign }: CardProps) {
 					</p>
 				</StyledFooter>
 			</StyledContainer>
+
+			{isDonationOpen && (
+				<Donation
+					isOpen={true}
+					campaign={campaign}
+					key="create-donation"
+					onOpenChange={onDonationOpenChange}
+					onRequestToClose={onDonationClose}
+				/>
+			)}
+
+			{isDetailsOpen && (
+				<Details
+					isOpen={true}
+					campaign={campaign}
+					key="campaign-details"
+					onOpenChange={onDetailsOpenChange}
+				/>
+			)}
 		</>
 	);
 }
