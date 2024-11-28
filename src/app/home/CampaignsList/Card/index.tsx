@@ -1,3 +1,4 @@
+import { useDisclosure } from '@nextui-org/react';
 import dayjs from 'dayjs';
 
 import useUsers from '@/hooks/useUsers';
@@ -18,6 +19,7 @@ import {
 	StyledSideContent,
 	StyledTitle,
 } from './styles';
+import Donation from './dialogs/Donation';
 
 interface CardProps {
 	campaign: Campaign;
@@ -25,6 +27,13 @@ interface CardProps {
 
 export default function Card({ campaign }: CardProps) {
 	const { users } = useUsers();
+
+	const {
+		isOpen: isDonationOpen,
+		onClose: onDonationClose,
+		onOpen: onDonationOpen,
+		onOpenChange: onDonationOpenChange,
+	} = useDisclosure();
 
 	const campaignStatus =
 		campaign.receivedAmount === campaign.goalAmount
@@ -64,7 +73,9 @@ export default function Card({ campaign }: CardProps) {
 							))}
 						</StyledCurrenciesContainer>
 
-						<StyledPrimaryButton>Doar</StyledPrimaryButton>
+						<StyledPrimaryButton onClick={onDonationOpen}>
+							Doar
+						</StyledPrimaryButton>
 					</StyledSideContent>
 				</StyledContent>
 
@@ -92,6 +103,16 @@ export default function Card({ campaign }: CardProps) {
 					</p>
 				</StyledFooter>
 			</StyledContainer>
+
+			{isDonationOpen && (
+				<Donation
+					isOpen={true}
+					campaign={campaign}
+					key="create-donation"
+					onOpenChange={onDonationOpenChange}
+					onRequestToClose={onDonationClose}
+				/>
+			)}
 		</>
 	);
 }

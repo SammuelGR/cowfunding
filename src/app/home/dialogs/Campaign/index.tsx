@@ -35,6 +35,7 @@ interface CampaignProps {
 const initialValues: CampaignModel = {
 	acceptedCurrencies: [],
 	description: '',
+	donations: [],
 	endDate: dayjs().add(1, 'day').format('YYYY-MM-DD'),
 	goalAmount: 0,
 	id: '',
