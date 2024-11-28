@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import { User } from '@/models/User';
 
@@ -11,7 +10,7 @@ export interface UsersProviderProps {
 	users: User[];
 }
 
-const usersStorageKey = '@cowfunding:users';
+export const usersStorageKey = '@cowfunding:users';
 
 const UsersContext = createContext<UsersProviderProps | null>(null);
 
@@ -25,13 +24,11 @@ export const UsersProvider = ({ children }: React.PropsWithChildren) => {
 		setUsers(parsedUsers);
 	}, []);
 
-	const updateUsers = (users: User[]) => {
-		localStorage.setItem(usersStorageKey, JSON.stringify(users));
+	const updateUsers = (newUsers: User[]) => {
+		localStorage.setItem(usersStorageKey, JSON.stringify(newUsers));
 	};
 
 	const createUser = (user: User) => {
-		user.id = uuidv4();
-
 		setUsers((prevUsers) => {
 			const newUsers = [...prevUsers];
 

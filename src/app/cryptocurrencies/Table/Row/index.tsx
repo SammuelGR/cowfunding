@@ -1,7 +1,7 @@
 import { useDisclosure } from '@nextui-org/react';
 import Image from 'next/image';
 
-import iconPlaceholder from '@/app/dollar.png';
+import iconPlaceholder from '@/app/ui/dollar.png';
 import DangerButton from '@/components/Button/DangerButton';
 import PrimaryButton from '@/components/Button/PrimaryButton';
 import { Cryptocurrency } from '@/models/Currencies';
