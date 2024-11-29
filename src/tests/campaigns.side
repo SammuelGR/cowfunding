@@ -1,0 +1,347 @@
+{
+  "id": "002983ba-d8a3-4c14-a086-63d932807932",
+  "version": "2.0",
+  "name": "cowfunding",
+  "url": "https://cowfunding.vercel.app",
+  "tests": [{
+    "id": "7e9b0b66-680f-4e4c-b476-b6ac01d3e7e0",
+    "name": "campaign",
+    "commands": [{
+      "id": "974354ea-e301-4837-b606-e07a3cd55d43",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7b20c8a1-ab61-4740-b2ee-0c64994a83ab",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x784",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cba48699-eac8-443d-bf7b-d6c51407f012",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-2720fa6c-3 > .sc-ebe4a875-0:nth-child(1)",
+      "targets": [
+        ["css=.sc-2720fa6c-3 > .sc-ebe4a875-0:nth-child(1)", "css:finder"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Criar campanha')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "32d1e121-15d6-4ac7-a3bd-03eba3a4b180",
+      "comment": "",
+      "command": "click",
+      "target": "id=title",
+      "targets": [
+        ["id=title", "id"],
+        ["css=#title", "css:finder"],
+        ["xpath=//input[@id='title']", "xpath:attributes"],
+        ["xpath=//div[@id=':rs:']/label/input", "xpath:idRelative"],
+        ["xpath=//div[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "76c80789-198d-4cff-8c1d-2900afe560b2",
+      "comment": "",
+      "command": "type",
+      "target": "id=title",
+      "targets": [
+        ["id=title", "id"],
+        ["css=#title", "css:finder"],
+        ["xpath=//input[@id='title']", "xpath:attributes"],
+        ["xpath=//div[@id=':rs:']/label/input", "xpath:idRelative"],
+        ["xpath=//div[2]/label/input", "xpath:position"]
+      ],
+      "value": "Pesquisa de CRIPTO na UNIFEI"
+    }, {
+      "id": "61527525-1728-4c7a-be3e-4ba79e673c84",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-8d184a73-1",
+      "targets": [
+        ["css=.sc-8d184a73-1", "css:finder"],
+        ["xpath=//div[@id=':rs:']/label[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "744a0821-578f-46a4-b647-a3cda05b95fe",
+      "comment": "",
+      "command": "type",
+      "target": "css=.sc-8d184a73-1",
+      "targets": [
+        ["css=.sc-8d184a73-1", "css:finder"],
+        ["xpath=//div[@id=':rs:']/label[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "O objetivo é arrecadar fundos para possibilitar a pesquisa de criptomoedas na universidade."
+    }, {
+      "id": "999503f2-bdcd-4770-84b6-d3e17f99ce81",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-6a42a30e-2 > label:nth-child(1) > .sc-2abc97fc-1",
+      "targets": [
+        ["css=.sc-6a42a30e-2 > label:nth-child(1) > .sc-2abc97fc-1", "css:finder"],
+        ["xpath=//input[@value='0']", "xpath:attributes"],
+        ["xpath=//div[@id=':rs:']/div/label/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a2946cb3-faf1-4860-b077-763b1f62da94",
+      "comment": "",
+      "command": "type",
+      "target": "css=.sc-6a42a30e-2 > label:nth-child(1) > .sc-2abc97fc-1",
+      "targets": [
+        ["css=.sc-6a42a30e-2 > label:nth-child(1) > .sc-2abc97fc-1", "css:finder"],
+        ["xpath=//input[@value='0']", "xpath:attributes"],
+        ["xpath=//div[@id=':rs:']/div/label/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/label/input", "xpath:position"]
+      ],
+      "value": "3000"
+    }, {
+      "id": "42ef869b-54aa-4be1-b960-6117084d6d61",
+      "comment": "",
+      "command": "click",
+      "target": "css=label:nth-child(2) > .sc-6a42a30e-0",
+      "targets": [
+        ["css=label:nth-child(2) > .sc-6a42a30e-0", "css:finder"],
+        ["xpath=//input[@value='2024-11-29']", "xpath:attributes"],
+        ["xpath=//div[@id=':rs:']/div/label[2]/input", "xpath:idRelative"],
+        ["xpath=//label[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4a0260f2-8dd6-4f88-a473-3ee8e2127f99",
+      "comment": "",
+      "command": "click",
+      "target": "css=label:nth-child(2) > .sc-6a42a30e-0",
+      "targets": [
+        ["css=label:nth-child(2) > .sc-6a42a30e-0", "css:finder"],
+        ["xpath=//input[@value='2024-11-29']", "xpath:attributes"],
+        ["xpath=//div[@id=':rs:']/div/label[2]/input", "xpath:idRelative"],
+        ["xpath=//label[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4ec0a128-8aee-4dcb-b9dd-70171ac82f66",
+      "comment": "",
+      "command": "type",
+      "target": "css=label:nth-child(2) > .sc-6a42a30e-0",
+      "targets": [
+        ["css=label:nth-child(2) > .sc-6a42a30e-0", "css:finder"],
+        ["xpath=//input[@value='2024-01-29']", "xpath:attributes"],
+        ["xpath=//div[@id=':rs:']/div/label[2]/input", "xpath:idRelative"],
+        ["xpath=//label[2]/input", "xpath:position"]
+      ],
+      "value": "2024-01-29"
+    }, {
+      "id": "034b199e-8786-481c-975a-73242e4d196f",
+      "comment": "",
+      "command": "type",
+      "target": "css=label:nth-child(2) > .sc-6a42a30e-0",
+      "targets": [
+        ["css=label:nth-child(2) > .sc-6a42a30e-0", "css:finder"],
+        ["xpath=//input[@value='2024-12-29']", "xpath:attributes"],
+        ["xpath=//div[@id=':rs:']/div/label[2]/input", "xpath:idRelative"],
+        ["xpath=//label[2]/input", "xpath:position"]
+      ],
+      "value": "2024-12-29"
+    }, {
+      "id": "0bc20564-6734-420a-bde4-8190ef4e3e99",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-4ef9f63b-0 > label:nth-child(2)",
+      "targets": [
+        ["css=.sc-4ef9f63b-0 > label:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id=':rs:']/div[2]/label[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/label[2]", "xpath:position"],
+        ["xpath=//label[contains(.,'Bitcoin')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bf07a128-d953-4bb9-9117-0e6a91218f86",
+      "comment": "",
+      "command": "click",
+      "target": "css=label:nth-child(6)",
+      "targets": [
+        ["css=label:nth-child(6)", "css:finder"],
+        ["xpath=//div[@id=':rs:']/div[2]/label[6]", "xpath:idRelative"],
+        ["xpath=//label[6]", "xpath:position"],
+        ["xpath=//label[contains(.,'Solana')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f8ced333-88a7-4d48-937f-7bb29cf95883",
+      "comment": "",
+      "command": "click",
+      "target": "css=label:nth-child(9)",
+      "targets": [
+        ["css=label:nth-child(9)", "css:finder"],
+        ["xpath=//div[@id=':rs:']/div[2]/label[9]", "xpath:idRelative"],
+        ["xpath=//label[9]", "xpath:position"],
+        ["xpath=//label[contains(.,'Chainlink')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f5ae0559-c111-4b34-a395-8856e54c2345",
+      "comment": "",
+      "command": "click",
+      "target": "css=.flex > .sc-e18779f0-0",
+      "targets": [
+        ["css=.flex > .sc-e18779f0-0", "css:finder"],
+        ["xpath=//section[@id=':rq:']/footer/button[2]", "xpath:idRelative"],
+        ["xpath=//footer/button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Salvar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cf8f775b-2c41-4a9a-9089-e9a7a15a961f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-2abc97fc-1",
+      "targets": [
+        ["css=.sc-2abc97fc-1", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e42ff557-5d7c-4b2a-b290-4aff08cc1d5b",
+      "comment": "",
+      "command": "type",
+      "target": "css=.sc-2abc97fc-1",
+      "targets": [
+        ["css=.sc-2abc97fc-1", "css:finder"],
+        ["xpath=//input[@value='unifei']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "unifei"
+    }, {
+      "id": "81878929-4086-4d07-85f7-30fd27bbc67f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-4ba4f222-11",
+      "targets": [
+        ["css=.sc-4ba4f222-11", "css:finder"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Detalhes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4bc9628e-fc3e-4a12-94e3-31d2a716d0ca",
+      "comment": "",
+      "command": "click",
+      "target": "css=.flex > .sc-ebe4a875-0",
+      "targets": [
+        ["css=.flex > .sc-ebe4a875-0", "css:finder"],
+        ["xpath=//section[@id=':r13:']/footer/button", "xpath:idRelative"],
+        ["xpath=//footer/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Fechar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0c76f3c-05b1-43a5-8ecd-540b4f37821e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-4ba4f222-10",
+      "targets": [
+        ["css=.sc-4ba4f222-10", "css:finder"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Doar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "314f533e-d1e7-4293-86c4-51e79dab56eb",
+      "comment": "",
+      "command": "click",
+      "target": "id=amount",
+      "targets": [
+        ["id=amount", "id"],
+        ["css=#amount", "css:finder"],
+        ["xpath=//input[@id='amount']", "xpath:attributes"],
+        ["xpath=//div[@id=':r1c:']/label/input", "xpath:idRelative"],
+        ["xpath=//div[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8415da5e-4b0b-4b4a-abb9-23110400a78d",
+      "comment": "",
+      "command": "type",
+      "target": "id=amount",
+      "targets": [
+        ["id=amount", "id"],
+        ["css=#amount", "css:finder"],
+        ["xpath=//input[@id='amount']", "xpath:attributes"],
+        ["xpath=//div[@id=':r1c:']/label/input", "xpath:idRelative"],
+        ["xpath=//div[2]/label/input", "xpath:position"]
+      ],
+      "value": "3000"
+    }, {
+      "id": "1145a82d-a137-49b2-a7c2-17079025e7ca",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-780c23ca-1",
+      "targets": [
+        ["css=.sc-780c23ca-1", "css:finder"],
+        ["xpath=//div[@id=':r1c:']/label[2]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bee5cf3d-2d33-4650-a8f9-4be19b2b6e86",
+      "comment": "",
+      "command": "select",
+      "target": "css=.sc-780c23ca-1",
+      "targets": [],
+      "value": "label=Bitcoin"
+    }, {
+      "id": "33507325-65c2-4e82-8ba6-2b4355007d5f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.flex > .sc-e18779f0-0",
+      "targets": [
+        ["css=.flex > .sc-e18779f0-0", "css:finder"],
+        ["xpath=//section[@id=':r1a:']/footer/button[2]", "xpath:idRelative"],
+        ["xpath=//footer/button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Enviar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3955d0ad-0d6d-466b-b102-330e0b13c34c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-4ba4f222-12",
+      "targets": [
+        ["css=.sc-4ba4f222-12", "css:finder"],
+        ["xpath=//div/div[2]/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7a99b162-fcd0-4444-a94e-a396a8eaa758",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-4ba4f222-11",
+      "targets": [
+        ["css=.sc-4ba4f222-11", "css:finder"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Detalhes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "6f35f01f-3cdf-44d7-a36b-dc4c49a6af49",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://cowfunding.vercel.app/"],
+  "plugins": []
+}
